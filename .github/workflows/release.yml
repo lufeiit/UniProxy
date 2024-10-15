@@ -1,4 +1,4 @@
-name: Build and Release
+name: Build 和 Release
 
 on:
   workflow_dispatch:
@@ -45,12 +45,3 @@ jobs:
         name: libs
         path: |
           ./libs.zip
-          
-    - name: Upload binaries to release
-      uses: svenstaro/upload-release-action@v2
-      if: github.event_name == 'release'
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./libs.zip*
-        tag: ${{ github.ref }}
-        file_glob: true
